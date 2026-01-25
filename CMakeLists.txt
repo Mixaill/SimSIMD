@@ -59,10 +59,12 @@ else ()
 endif ()
 
 # Global compiler flags for debug and release
-set(CMAKE_CXX_FLAGS_DEBUG "-g -fsanitize=address")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-set(CMAKE_C_FLAGS_DEBUG "-g -fsanitize=address")
-set(CMAKE_C_FLAGS_RELEASE "-O3")
+if(PROJECT_IS_TOP_LEVEL)
+    set(CMAKE_CXX_FLAGS_DEBUG "-g -fsanitize=address")
+    set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+    set(CMAKE_C_FLAGS_DEBUG "-g -fsanitize=address")
+    set(CMAKE_C_FLAGS_RELEASE "-O3")
+endif()
 
 # Compiler-specific flags
 if (CMAKE_CXX_COMPILER_ID MATCHES "^(Apple)?Clang$")
